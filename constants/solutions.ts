@@ -1,0 +1,88 @@
+export const SOLUTIONS = [
+  {
+    slug:        "compliance-management",
+    title:       "Compliance Management",
+    tagline:     "Stay ahead of regulations, always.",
+    description: "Track, manage, and evidence compliance across all applicable Kenya and UAE regulations from one central dashboard.",
+    icon:        "ShieldCheck",
+    features: [
+      "Regulation library for Kenya (OSHA 2007, EMCA) and UAE (OSHAD-SF, EHS)",
+      "Automated due-date reminders and escalations",
+      "Evidence upload and audit trail",
+      "Compliance score gauge and gap analysis reports",
+    ],
+    category: "core",
+  },
+  {
+    slug:        "document-control",
+    title:       "Document Control",
+    tagline:     "One source of truth for all HSEQ documents.",
+    description: "Centralise policies, procedures, permits, certificates and risk assessments with full version control.",
+    icon:        "FolderOpen",
+    features: [
+      "Structured document library with categories",
+      "Version history and approval workflows",
+      "Expiry and review date alerts",
+      "AWS S3-powered secure storage",
+    ],
+    category: "core",
+  },
+  {
+    slug:        "audit-management",
+    title:       "Audit Management",
+    tagline:     "Structured internal and external audits, simplified.",
+    description: "Plan, conduct, and close audits with findings tracking, corrective actions, and automated report generation.",
+    icon:        "ClipboardList",
+    features: [
+      "Supports ISO 45001, ISO 14001, ISO 9001 audits",
+      "Finding severity classification (Critical/Major/Minor)",
+      "Corrective action assignment and tracking",
+      "Audit score and readiness reporting",
+    ],
+    category: "core",
+  },
+  {
+    slug:        "incident-reporting",
+    title:       "Incident Reporting",
+    tagline:     "Report fast, investigate deeper.",
+    description: "Capture accidents, near-misses, hazards and environmental events, then drive root-cause analysis to prevent recurrence.",
+    icon:        "AlertTriangle",
+    features: [
+      "Mobile-first incident capture",
+      "Root cause analysis (5-Why, Fishbone)",
+      "Lost-time injury tracking",
+      "Regulatory notification workflows",
+    ],
+    category: "core",
+  },
+  {
+    slug:        "training-competency",
+    title:       "Training & Competency",
+    tagline:     "Build a culture of safety from the ground up.",
+    description: "Manage training calendars, track attendance, store certificates and monitor expiry for your entire workforce.",
+    icon:        "GraduationCap",
+    features: [
+      "Training matrix view per employee",
+      "Certificate repository with expiry alerts",
+      "Online, classroom and blended delivery modes",
+      "Mandatory vs elective training tracking",
+    ],
+    category: "core",
+  },
+  {
+    slug:        "virtual-hseq-consulting",
+    title:       "Virtual HSEQ Consulting",
+    tagline:     "Expert guidance, no office needed.",
+    description: "Access certified HSEQ professionals remotely for gap assessments, system implementation, and certification prep.",
+    icon:        "Users",
+    features: [
+      "Dedicated virtual HSEQ consultant",
+      "Gap analysis and action planning",
+      "ISO certification pathway support",
+      "Monthly compliance review sessions",
+    ],
+    category: "consulting",
+  },
+] as const;
+
+export type SolutionSlug = (typeof SOLUTIONS)[number]["slug"];

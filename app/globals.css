@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Brand CSS Variables ──────────────────────────────────────────── */
+:root {
+  --color-navy:        #1B2A4A;
+  --color-green-dark:  #2E7D32;
+  --color-green-mid:   #4CAF50;
+  --color-green-light: #66BB6A;
+  --color-white:       #FFFFFF;
+  --color-bg:          #F5F7FA;
+  --color-text:        #1A1A2E;
+  --color-muted:       #6B7280;
+
+  /* shadcn/ui HSL tokens */
+  --background:        0 0% 96.1%;
+  --foreground:        230 35% 15%;
+  --card:              0 0% 100%;
+  --card-foreground:   230 35% 15%;
+  --popover:           0 0% 100%;
+  --popover-foreground:230 35% 15%;
+  --primary:           123 56% 33%;
+  --primary-foreground:0 0% 100%;
+  --secondary:         220 40% 19%;
+  --secondary-foreground:0 0% 100%;
+  --muted:             220 14% 96%;
+  --muted-foreground:  220 9% 46%;
+  --accent:            123 40% 49%;
+  --accent-foreground: 0 0% 100%;
+  --destructive:       0 84% 60%;
+  --destructive-foreground:0 0% 100%;
+  --border:            220 13% 91%;
+  --input:             220 13% 91%;
+  --ring:              123 56% 33%;
+  --radius:            0rem;          /* ← Zero radius: sharp edges everywhere */
+}
+
+/* ─── Base reset ─────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 !important;      /* ← Force sharp edges on everything */
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Selection ─────────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--color-green-dark);
+  color: #fff;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: var(--color-bg); }
+::-webkit-scrollbar-thumb  { background: var(--color-green-dark); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-green-mid); }
+
+/* ─── Focus ring ─────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-green-mid);
+  outline-offset: 2px;
+}
+
+/* ─── Utility layer ─────────────────────────────────────────────────── */
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  .gradient-brand {
+    background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-green-dark) 100%);
+  }
+  .gradient-green {
+    background: linear-gradient(135deg, var(--color-green-dark) 0%, var(--color-green-light) 100%);
+  }
+  .glass {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .card-shadow       { box-shadow: 0 1px 4px rgba(27,42,74,0.08), 0 4px 16px rgba(27,42,74,0.05); }
+  .card-shadow-hover { box-shadow: 0 4px 20px rgba(27,42,74,0.14), 0 1px 4px rgba(27,42,74,0.08); }
+}
+
+/* ─── Component layer ────────────────────────────────────────────────── */
+@layer components {
+
+  /* Buttons — sharp, flat, high contrast */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-2.5 font-semibold text-sm text-white transition-all duration-150;
+    background-color: var(--color-green-dark);
+    border: 2px solid transparent;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-green-mid);
+    box-shadow: 0 4px 16px rgba(46,125,50,0.30);
+    transform: translateY(-1px);
+  }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-2.5 font-semibold text-sm transition-all duration-150;
+    border: 2px solid var(--color-green-dark);
+    color: var(--color-green-dark);
+    background: transparent;
+  }
+  .btn-outline:hover {
+    background-color: var(--color-green-dark);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .btn-navy {
+    @apply inline-flex items-center gap-2 px-6 py-2.5 font-semibold text-sm text-white transition-all duration-150;
+    background-color: var(--color-navy);
+    border: 2px solid transparent;
+  }
+  .btn-navy:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(27,42,74,0.30);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 font-medium text-sm transition-colors duration-150;
+    color: var(--color-muted);
+    background: transparent;
+    border: 1px solid transparent;
+  }
+  .btn-ghost:hover {
+    background: rgba(27,42,74,0.05);
+    color: var(--color-navy);
+  }
+
+  /* Layout helpers */
+  .section    { @apply py-20 px-4; }
+  .container-xl { @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8; }
+
+  /* Typography */
+  .heading-hero {
+    @apply text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl;
+    color: var(--color-navy);
+  }
+  .heading-section {
+    @apply text-3xl font-bold tracking-tight sm:text-4xl;
+    color: var(--color-navy);
+  }
+  .heading-card { @apply text-base font-semibold; color: var(--color-navy); }
+
+  /* Cards — no radius, clear border */
+  .card {
+    @apply bg-white p-6 card-shadow transition-all duration-200;
+    border: 1px solid rgba(27,42,74,0.08);
+  }
+  .card:hover { @apply card-shadow-hover; transform: translateY(-2px); }
+
+  /* Badges — minimal, typographic */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide;
+  }
+  .badge-green {
+    @apply badge;
+    background: rgba(46,125,50,0.1);
+    color: var(--color-green-dark);
+    border-left: 3px solid var(--color-green-dark);
+  }
+  .badge-navy {
+    @apply badge;
+    background: rgba(27,42,74,0.08);
+    color: var(--color-navy);
+    border-left: 3px solid var(--color-navy);
+  }
+  .badge-amber {
+    @apply badge;
+    background: rgba(245,158,11,0.1);
+    color: #92400E;
+    border-left: 3px solid #F59E0B;
+  }
+  .badge-red {
+    @apply badge;
+    background: rgba(239,68,68,0.1);
+    color: #991B1B;
+    border-left: 3px solid #EF4444;
+  }
+
+  /* Portal sidebar */
+  .sidebar-item {
+    @apply flex items-center gap-3 px-3 py-2.5 text-sm font-medium transition-all duration-100;
+    border-left: 3px solid transparent;
+  }
+  .sidebar-item-active {
+    background: rgba(46,125,50,0.10);
+    color: var(--color-green-dark);
+    border-left-color: var(--color-green-dark);
+  }
+  .sidebar-item-inactive {
+    color: rgba(255,255,255,0.55);
+  }
+  .sidebar-item-inactive:hover {
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    border-left-color: rgba(255,255,255,0.2);
+  }
+
+  /* Form inputs */
+  .input-field {
+    @apply w-full px-4 py-2.5 text-sm outline-none transition-all duration-150;
+    background: #fff;
+    border: 1px solid #D1D5DB;
+    color: var(--color-text);
+  }
+  .input-field:focus {
+    border-color: var(--color-green-dark);
+    box-shadow: 0 0 0 3px rgba(46,125,50,0.12);
+  }
+  .input-field::placeholder { color: #9CA3AF; }
+
+  /* Table */
+  .data-table th {
+    @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider;
+    background: #F9FAFB;
+    color: var(--color-navy);
+    border-bottom: 2px solid rgba(27,42,74,0.1);
+  }
+  .data-table td {
+    @apply px-4 py-3 text-sm;
+    border-bottom: 1px solid #F3F4F6;
+    color: var(--color-text);
+  }
+  .data-table tr:hover td { background: #FAFBFF; }
+
+  /* Status pills — left-border style */
+  .status-pill {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide;
+  }
+  .status-compliant    { @apply status-pill; background:#F0FDF4; color:#15803D; border-left:3px solid #16A34A; }
+  .status-non-compliant{ @apply status-pill; background:#FEF2F2; color:#B91C1C; border-left:3px solid #EF4444; }
+  .status-in-progress  { @apply status-pill; background:#FFFBEB; color:#92400E; border-left:3px solid #F59E0B; }
+  .status-overdue      { @apply status-pill; background:#FEF2F2; color:#B91C1C; border-left:3px solid #DC2626; }
+  .status-planned      { @apply status-pill; background:#EFF6FF; color:#1D4ED8; border-left:3px solid #3B82F6; }
+  .status-completed    { @apply status-pill; background:#F0FDF4; color:#15803D; border-left:3px solid #16A34A; }
+
+  /* Page header */
+  .page-header {
+    @apply mb-8 flex items-center justify-between;
+    border-bottom: 2px solid rgba(27,42,74,0.08);
+    padding-bottom: 1.25rem;
+  }
+}

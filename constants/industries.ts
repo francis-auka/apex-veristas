@@ -1,0 +1,68 @@
+export const INDUSTRIES = [
+  {
+    slug:        "construction",
+    title:       "Construction",
+    description: "Manage site safety, contractor compliance, and permit-to-work systems for complex construction projects.",
+    icon:        "HardHat",
+    regulations: ["OSHA 2007 (Kenya)", "OSHAD-SF (UAE)", "ISO 45001"],
+    color:       "#F97316",
+  },
+  {
+    slug:        "oil-and-gas",
+    title:       "Oil & Gas",
+    description: "Robust HSEQ frameworks for upstream, midstream and downstream operations in East Africa and the Gulf.",
+    icon:        "Flame",
+    regulations: ["NEMA (Kenya)", "ESMA (UAE)", "ISO 14001", "ISO 45001"],
+    color:       "#6366F1",
+  },
+  {
+    slug:        "manufacturing",
+    title:       "Manufacturing",
+    description: "Drive quality and occupational health compliance across production lines and supply chains.",
+    icon:        "Factory",
+    regulations: ["Kenya Bureau of Standards", "UAE ESMA", "ISO 9001", "ISO 45001"],
+    color:       "#2E7D32",
+  },
+  {
+    slug:        "hospitality",
+    title:       "Hospitality & Tourism",
+    description: "Ensure food safety, fire compliance, and staff welfare across hotels, lodges, and tour operators.",
+    icon:        "Utensils",
+    regulations: ["Kenya Tourism Act", "Dubai Tourism", "HACCP", "ISO 22000"],
+    color:       "#EAB308",
+  },
+  {
+    slug:        "healthcare",
+    title:       "Healthcare",
+    description: "Navigate complex biomedical waste, infection control, and staff safety requirements.",
+    icon:        "HeartPulse",
+    regulations: ["Kenya Health Act", "UAE MOHAP", "ISO 13485", "ISO 45001"],
+    color:       "#EC4899",
+  },
+  {
+    slug:        "logistics-transport",
+    title:       "Logistics & Transport",
+    description: "Fleet safety, driver competency, and cargo handling compliance across East Africa and the UAE.",
+    icon:        "Truck",
+    regulations: ["NTSA (Kenya)", "RTA (UAE)", "OHSAS 45001"],
+    color:       "#14B8A6",
+  },
+  {
+    slug:        "education",
+    title:       "Education",
+    description: "Safeguard students and staff with comprehensive safety policies, fire drills, and emergency preparedness.",
+    icon:        "BookOpen",
+    regulations: ["Kenya Education Act", "KHDA (Dubai)", "ISO 45001"],
+    color:       "#8B5CF6",
+  },
+  {
+    slug:        "financial-services",
+    title:       "Financial Services",
+    description: "Operational health and workplace safety for banks, SACCOs, fintechs and insurance firms.",
+    icon:        "Landmark",
+    regulations: ["CBK Guidelines", "CBUAE Guidelines", "ISO 45001"],
+    color:       "#1B2A4A",
+  },
+] as const;
+
+export type IndustrySlug = (typeof INDUSTRIES)[number]["slug"];
