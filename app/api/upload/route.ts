@@ -53,7 +53,4 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// Required to parse multipart/form-data
-export const config = {
-  api: { bodyParser: false },
-};
+
