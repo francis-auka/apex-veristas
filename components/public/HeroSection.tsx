@@ -54,8 +54,7 @@ export default function HeroSection() {
       }} />
 
       <div className="container-xl" style={{ position: "relative", zIndex: 10, paddingTop: 80, paddingBottom: 80 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}
-             className="grid grid-cols-1 lg:grid-cols-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" style={{ position: "relative", zIndex: 10 }}>
 
           {/* Left */}
           <div>
@@ -228,17 +227,16 @@ export default function HeroSection() {
         {/* Stats bar */}
         <div style={{
           marginTop: 80,
-          display: "grid",
-          background: "rgba(255,255,255,0.04)",
-          border: "1px solid rgba(255,255,255,0.08)",
-        }} className="grid-cols-2 lg:grid-cols-4">
-          {STATS.map((s, i) => (
+          background: "rgba(255,255,255,0.08)",
+          gap: 1,
+        }} className="grid grid-cols-2 lg:grid-cols-4">
+          {STATS.map((s) => (
             <div key={s.label} style={{
               padding: "24px 20px",
               textAlign: "center",
-              borderRight: (i % 2 === 0 || i < 3) ? "1px solid rgba(255,255,255,0.07)" : "none",
-              borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.07)" : "none",
-            }} className="sm:border-b-0 lg:border-r">
+              background: "rgba(27,42,74,0.8)",
+              backdropFilter: "blur(10px)",
+            }}>
               <div style={{
                 fontSize: "clamp(1.5rem,3vw,2rem)", fontWeight: 900,
                 backgroundImage: "linear-gradient(90deg,#4CAF50,#66BB6A)",

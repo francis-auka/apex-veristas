@@ -84,7 +84,7 @@ export default function AboutPage() {
       {/* Story */}
       <section className="section-responsive" style={{ background: "#fff" }}>
         <div className="container-xl" style={{ maxWidth: 820 }}>
-          <div className="responsive-grid responsive-grid-2" style={{ gap: 60, alignItems: "center" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
               <h2 style={{ fontSize: 26, fontWeight: 800, color: "#1B2A4A", marginBottom: 16 }}>Our Story</h2>
               <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.75, marginBottom: 16 }}>
@@ -137,7 +137,7 @@ export default function AboutPage() {
       <section className="section" style={{ background: "#fff" }}>
         <div className="container-xl">
           <h2 style={{ fontSize: 26, fontWeight: 800, color: "#1B2A4A", textAlign: "center", marginBottom: 48 }}>Our Leadership Team</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 2, background: "rgba(27,42,74,0.06)", maxWidth: 900, margin: "0 auto" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0.5 bg-gray-100 max-w-5xl mx-auto overflow-hidden">
             {TEAM.map((m) => (
               <div key={m.name} style={{ background: "#fff", padding: 32 }}>
                 <div style={{

@@ -16,8 +16,7 @@ export default function Footer() {
       <div style={{ height: 4, background: "linear-gradient(90deg,#2E7D32,#4CAF50,#66BB6A)" }} />
 
       <div className="container-xl" style={{ paddingTop: 64, paddingBottom: 64 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr", gap: 48 }}
-             className="grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-12">
 
           {/* Brand */}
           <div>
