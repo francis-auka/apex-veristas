@@ -1,5 +1,6 @@
 "use client";
 import { getComplianceColor, getComplianceBadge } from "@/lib/utils";
+import { ComplianceGaugeSkeleton } from "@/components/shared/Skeleton";
 
 interface ComplianceGaugeProps {
   score:   number;
@@ -12,14 +13,7 @@ export default function ComplianceGauge({ score, loading = false }: ComplianceGa
   const color  = getComplianceColor(score);
   const badge  = getComplianceBadge(score);
 
-  if (loading) {
-    return (
-      <div className="card" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 220 }}>
-        <div style={{ width: 128, height: 128, background: "#F5F7FA", animation: "pulse 2s infinite" }} />
-        <div style={{ marginTop: 16, width: 100, height: 14, background: "#F5F7FA", animation: "pulse 2s infinite" }} />
-      </div>
-    );
-  }
+  if (loading) return <ComplianceGaugeSkeleton />;
 
   return (
     <div className="card" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>

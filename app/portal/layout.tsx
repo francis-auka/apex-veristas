@@ -5,6 +5,8 @@ import Sidebar from "@/components/portal/Sidebar";
 import Topbar  from "@/components/portal/Topbar";
 import SessionProvider from "@/components/shared/SessionProvider";
 
+import PageTransition from "@/components/shared/PageTransition";
+
 export default async function PortalLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(authOptions);
   if (!session) redirect("/login");
@@ -15,7 +17,9 @@ export default async function PortalLayout({ children }: { children: React.React
         <Sidebar />
         <div className="flex flex-1 flex-col overflow-hidden">
           <Topbar />
-          <main className="flex-1 overflow-y-auto p-6">{children}</main>
+          <main className="flex-1 overflow-y-auto p-6">
+            <PageTransition>{children}</PageTransition>
+          </main>
         </div>
       </div>
     </SessionProvider>

@@ -1,4 +1,5 @@
 import { LucideIcon } from "lucide-react";
+import { ActionCardSkeleton } from "@/components/shared/Skeleton";
 
 interface ActionCardProps {
   title:      string;
@@ -19,18 +20,7 @@ export default function ActionCard({
   trend, loading = false,
   accent = "#2E7D32",
 }: ActionCardProps) {
-  if (loading) {
-    return (
-      <div className="card">
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 16 }}>
-          <div style={{ height: 12, width: 80, background: "#F5F7FA" }} />
-          <div style={{ width: 40, height: 40, background: "#F5F7FA" }} />
-        </div>
-        <div style={{ height: 28, width: 60, background: "#F5F7FA" }} />
-        <div style={{ marginTop: 6, height: 10, width: 120, background: "#F5F7FA" }} />
-      </div>
-    );
-  }
+  if (loading) return <ActionCardSkeleton />;
 
   return (
     <div

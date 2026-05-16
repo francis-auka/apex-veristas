@@ -49,7 +49,7 @@ export default function Topbar({ title = "Dashboard", subtitle }: TopbarProps) {
             placeholder="Search..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-52 rounded-lg border py-2 pl-9 pr-4 text-sm transition-shadow focus:shadow-md focus:outline-none"
+            className="w-52 border py-2 pl-9 pr-4 text-sm transition-shadow focus:shadow-md focus:outline-none"
             style={{
               borderColor:     "#e5e7eb",
               backgroundColor: "#F9FAFB",
@@ -61,7 +61,7 @@ export default function Topbar({ title = "Dashboard", subtitle }: TopbarProps) {
         {/* Quick upload */}
         <button
           onClick={() => setUploadOpen(true)}
-          className="flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-xs font-semibold text-white transition-all hover:scale-105 hover:shadow-md"
+          className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white transition-all hover:scale-105 hover:shadow-md"
           style={{ background: "#2E7D32" }}
           title="Upload Document"
         >
@@ -72,13 +72,13 @@ export default function Topbar({ title = "Dashboard", subtitle }: TopbarProps) {
         {/* Notification bell */}
         <button
           onClick={togglePanel}
-          className="relative flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:bg-gray-100"
+          className="relative flex h-9 w-9 items-center justify-center transition-colors hover:bg-gray-100"
           aria-label="Notifications"
         >
           <Bell className="h-5 w-5" style={{ color: "#1B2A4A" }} />
           {unreadCount > 0 && (
             <span
-              className="absolute -top-0.5 -right-0.5 flex h-4 w-4 min-w-[16px] items-center justify-center rounded-full text-[9px] font-bold text-white"
+              className="absolute -top-0.5 -right-0.5 flex h-4 w-4 min-w-[16px] items-center justify-center text-[9px] font-bold text-white"
               style={{ background: "#EF4444" }}
             >
               {unreadCount > 9 ? "9+" : unreadCount}
