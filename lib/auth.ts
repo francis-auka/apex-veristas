@@ -78,14 +78,14 @@ export const authOptions: AuthOptions = {
   },
 
   pages: {
-    signIn:      "/login",
-    error:       "/login",    // redirect auth errors to login page
-    signOut:     "/",
+    signIn:  "/login",
+    error:   "/auth-error",  // dedicated error page so errors are visible
+    signOut: "/",
   },
 
   secret: process.env.NEXTAUTH_SECRET,
 
-  debug: process.env.NODE_ENV === "development",
+  debug: true, // keep on so Vercel logs show auth failures
 };
 
 // Augment next-auth types so TypeScript knows about our custom fields
