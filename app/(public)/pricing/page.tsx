@@ -72,11 +72,11 @@ export default function PricingPage() {
                       {plan.name}
                     </span>
                   </div>
-                  <div style={{ marginBottom: 4 }}>
+                   <div style={{ marginBottom: 4 }}>
                     <span style={{ fontSize: 42, fontWeight: 900, color: plan.highlighted ? "#fff" : "#1B2A4A", letterSpacing: "-0.03em" }}>
-                      {plan.price.KES === 0 ? "Free" : `KES ${plan.price.KES.toLocaleString()}`}
+                      {(plan.price.KES as number) === 0 ? "Free" : `KES ${plan.price.KES.toLocaleString()}`}
                     </span>
-                    {plan.price.KES > 0 && (
+                    {(plan.price.KES as number) > 0 && (
                       <span style={{ fontSize: 13, color: plan.highlighted ? "rgba(255,255,255,0.5)" : "#9CA3AF", marginLeft: 6 }}>/ month</span>
                     )}
                   </div>
@@ -86,7 +86,7 @@ export default function PricingPage() {
                 </div>
 
                 <Link
-                  href={plan.price.KES === 0 ? "/register" : `/register?plan=${plan.id}`}
+                  href={(plan.price.KES as number) === 0 ? "/register" : `/register?plan=${plan.id}`}
                   style={{
                     display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
                     padding: "14px 24px", fontWeight: 700, fontSize: 14,
