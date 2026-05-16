@@ -8,7 +8,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
 
 export default function SolutionCards() {
   return (
-    <section className="section" style={{ background: "#F5F7FA" }}>
+    <section className="section-responsive" style={{ background: "#F5F7FA" }}>
       <div className="container-xl">
         <div style={{ marginBottom: 56, textAlign: "center" }}>
           <span className="badge-green" style={{ marginBottom: 16, display: "inline-flex" }}>Our Solutions</span>
@@ -21,8 +21,7 @@ export default function SolutionCards() {
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: "rgba(27,42,74,0.08)" }}
-             className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="responsive-grid responsive-grid-2 responsive-grid-3" style={{ gap: 1, background: "rgba(27,42,74,0.08)" }}>
           {SOLUTIONS.map((sol) => {
             const Icon = ICON_MAP[sol.icon] ?? ShieldCheck;
             return (

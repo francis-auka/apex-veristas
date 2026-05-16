@@ -3,7 +3,7 @@ import { ArrowRight, Phone } from "lucide-react";
 
 export default function CTABanner() {
   return (
-    <section className="section">
+    <section className="section-responsive">
       <div className="container-xl">
         <div
           className="relative overflow-hidden rounded-3xl px-8 py-16 text-center sm:px-16"

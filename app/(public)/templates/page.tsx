@@ -94,7 +94,7 @@ export default function TemplatesPage() {
   return (
     <div style={{ paddingTop: 80 }}>
       {/* Hero */}
-      <section style={{ background: "#1B2A4A", padding: "80px 0" }}>
+      <section className="section-responsive" style={{ background: "#1B2A4A" }}>
         <div className="container-xl" style={{ textAlign: "center" }}>
           <span style={{
             display: "inline-flex", alignItems: "center", padding: "4px 14px", marginBottom: 20,
@@ -107,7 +107,7 @@ export default function TemplatesPage() {
           <p style={{ fontSize: 17, color: "rgba(255,255,255,0.6)", maxWidth: 540, margin: "0 auto 32px" }}>
             Production-ready HSEQ templates used by 500+ companies across Kenya &amp; UAE — free to download, free to use.
           </p>
-          <div style={{ display: "flex", justifyContent: "center", gap: 20, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
             {["22,000+ downloads", "PDF & Excel formats", "Kenya & UAE compliant"].map((s) => (
               <span key={s} style={{ fontSize: 13, color: "rgba(255,255,255,0.7)", display: "flex", alignItems: "center", gap: 6 }}>
                 <span style={{ width: 5, height: 5, background: "#2E7D32", display: "inline-block" }} />{s}
@@ -118,9 +118,9 @@ export default function TemplatesPage() {
       </section>
 
       {/* Templates Grid */}
-      <section className="section" style={{ background: "#F5F7FA" }}>
+      <section className="section-responsive" style={{ background: "#F5F7FA" }}>
         <div className="container-xl">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(310px,1fr))", gap: 2, background: "rgba(27,42,74,0.06)" }}>
+          <div className="responsive-grid responsive-grid-2 responsive-grid-4" style={{ gap: 2, background: "rgba(27,42,74,0.06)" }}>
             {TEMPLATES.map((t) => (
               <div key={t.title} style={{ background: "#fff", padding: 28, display: "flex", flexDirection: "column" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
@@ -148,7 +148,7 @@ export default function TemplatesPage() {
       </section>
 
       {/* Platform CTA */}
-      <section style={{ background: "#1B2A4A", padding: "72px 0", textAlign: "center" }}>
+      <section className="section-responsive" style={{ background: "#1B2A4A", textAlign: "center" }}>
         <div className="container-xl">
           <h2 style={{ fontSize: 26, fontWeight: 900, color: "#fff", marginBottom: 12 }}>
             Use these templates inside the Apex Veritas platform

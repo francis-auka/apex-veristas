@@ -12,8 +12,8 @@ export default function PricingPage() {
   return (
     <div style={{ paddingTop: 80 }}>
       {/* Hero */}
-      <section className="section" style={{ background: "#1B2A4A", paddingTop: 80, paddingBottom: 80 }}>
-        <div style={{ height: 4, background: "linear-gradient(90deg,#2E7D32,#4CAF50,#66BB6A)", marginBottom: 0, marginLeft: "-100vw", marginRight: "-100vw", position: "relative", top: -80 }} />
+      <section className="section-responsive" style={{ background: "#1B2A4A" }}>
+        <div style={{ height: 4, background: "linear-gradient(90deg,#2E7D32,#4CAF50,#66BB6A)", position: "absolute", top: 0, left: 0, right: 0 }} />
         <div className="container-xl" style={{ textAlign: "center" }}>
           <span style={{
             display: "inline-flex", alignItems: "center", padding: "4px 14px", marginBottom: 20,
@@ -27,13 +27,14 @@ export default function PricingPage() {
             No hidden fees. Cancel anytime. All plans include Kenya & UAE regulation libraries.
           </p>
           {/* Currency bar */}
-          <div style={{ display: "inline-flex", border: "1px solid rgba(255,255,255,0.15)" }}>
-            {["KES (Kenya)", "AED (UAE)", "USD"].map((c, i) => (
+          <div style={{ display: "inline-flex", border: "1px solid rgba(255,255,255,0.15)", overflowX: "auto", maxWidth: "100%" }}>
+            {["KES", "AED", "USD"].map((c, i) => (
               <span key={c} style={{
                 padding: "8px 20px", fontSize: 13, fontWeight: 600, cursor: "pointer",
                 background: i === 0 ? "rgba(46,125,50,0.3)" : "transparent",
                 color: i === 0 ? "#fff" : "rgba(255,255,255,0.5)",
                 borderRight: i < 2 ? "1px solid rgba(255,255,255,0.12)" : "none",
+                whiteSpace: "nowrap",
               }}>{c}</span>
             ))}
           </div>
@@ -41,10 +42,9 @@ export default function PricingPage() {
       </section>
 
       {/* Plans */}
-      <section className="section" style={{ background: "#F5F7FA", marginTop: -1 }}>
+      <section className="section-responsive" style={{ background: "#F5F7FA", marginTop: -1 }}>
         <div className="container-xl">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: "rgba(27,42,74,0.08)" }}
-               className="grid-cols-1 lg:grid-cols-3">
+          <div className="responsive-grid responsive-grid-2 responsive-grid-3" style={{ gap: 1, background: "rgba(27,42,74,0.08)" }}>
             {PRICING_PLANS.map((plan) => (
               <div
                 key={plan.id}
@@ -126,8 +126,8 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ strip */}
-      <section className="section" style={{ background: "#fff", paddingTop: 60, paddingBottom: 80 }}>
-        <div className="container-xl" style={{ maxWidth: 800 }}>
+      <section className="section-responsive" style={{ background: "#fff" }}>
+        <div className="container-xl" style={{ paddingTop: 64, paddingBottom: 64 }}>
           <h2 style={{ fontSize: 24, fontWeight: 800, color: "#1B2A4A", marginBottom: 40, textAlign: "center" }}>
             Frequently asked questions
           </h2>

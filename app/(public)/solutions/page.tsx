@@ -68,7 +68,7 @@ export default function SolutionsPage() {
   return (
     <div style={{ paddingTop: 80 }}>
       {/* Hero */}
-      <section style={{ background: "#1B2A4A", padding: "80px 0" }}>
+      <section className="section-responsive" style={{ background: "#1B2A4A" }}>
         <div className="container-xl" style={{ textAlign: "center" }}>
           <span style={{
             display: "inline-flex", alignItems: "center", padding: "4px 14px", marginBottom: 20,
@@ -88,9 +88,9 @@ export default function SolutionsPage() {
       </section>
 
       {/* Solutions Grid */}
-      <section className="section" style={{ background: "#F5F7FA" }}>
+      <section className="section-responsive" style={{ background: "#F5F7FA" }}>
         <div className="container-xl">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(340px,1fr))", gap: 2, background: "rgba(27,42,74,0.06)" }}>
+          <div className="responsive-grid responsive-grid-2 responsive-grid-3" style={{ gap: 2, background: "rgba(27,42,74,0.06)" }}>
             {SOLUTIONS.map((s) => (
               <div key={s.title} style={{ background: "#fff", padding: 36, display: "flex", flexDirection: "column" }}>
                 <div style={{ width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", background: s.bg, marginBottom: 20 }}>
@@ -116,7 +116,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "#1B2A4A", padding: "80px 0", textAlign: "center" }}>
+      <section className="section-responsive" style={{ background: "#1B2A4A", textAlign: "center" }}>
         <div className="container-xl">
           <h2 style={{ fontSize: 28, fontWeight: 900, color: "#fff", marginBottom: 12 }}>Ready to consolidate your HSEQ operations?</h2>
           <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", marginBottom: 32 }}>14-day free trial. No credit card required.</p>

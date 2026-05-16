@@ -1,5 +1,5 @@
 "use client";
-import { Bell, Search, Plus } from "lucide-react";
+import { Bell, Search, Plus, Menu } from "lucide-react";
 import { useNotificationStore } from "@/store/notificationStore";
 import { usePortalStore }       from "@/store/portalStore";
 
@@ -14,6 +14,7 @@ export default function Topbar({ title = "Dashboard", subtitle }: TopbarProps) {
   const setUploadOpen    = usePortalStore((s) => s.setUploadModalOpen);
   const searchQuery      = usePortalStore((s) => s.searchQuery);
   const setSearchQuery   = usePortalStore((s) => s.setSearchQuery);
+  const toggleSidebar    = usePortalStore((s) => s.toggleSidebar);
 
   return (
     <header
@@ -26,14 +27,23 @@ export default function Topbar({ title = "Dashboard", subtitle }: TopbarProps) {
         zIndex:       30,
       }}
     >
-      {/* Page title */}
-      <div>
-        <h1 className="text-base font-bold" style={{ color: "#1B2A4A" }}>
-          {title}
-        </h1>
-        {subtitle && (
-          <p className="text-xs" style={{ color: "#6B7280" }}>{subtitle}</p>
-        )}
+      {/* Page title + mobile menu toggle */}
+      <div className="flex items-center gap-3">
+        <button
+          onClick={toggleSidebar}
+          className="flex h-9 w-9 items-center justify-center transition-colors hover:bg-gray-100 lg:hidden"
+          aria-label="Toggle Menu"
+        >
+          <Menu className="h-5 w-5" style={{ color: "#1B2A4A" }} />
+        </button>
+        <div>
+          <h1 className="text-base font-bold" style={{ color: "#1B2A4A" }}>
+            {title}
+          </h1>
+          {subtitle && (
+            <p className="text-xs" style={{ color: "#6B7280" }}>{subtitle}</p>
+          )}
+        </div>
       </div>
 
       {/* Right controls */}

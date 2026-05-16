@@ -98,6 +98,31 @@ body {
   }
   .card-shadow       { box-shadow: 0 1px 4px rgba(27,42,74,0.08), 0 4px 16px rgba(27,42,74,0.05); }
   .card-shadow-hover { box-shadow: 0 4px 20px rgba(27,42,74,0.14), 0 1px 4px rgba(27,42,74,0.08); }
+
+  /* Responsive Utilities */
+  .responsive-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .responsive-grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .responsive-grid-3 { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .responsive-grid-4 { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .section-responsive {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  @media (min-width: 768px) {
+    .section-responsive {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
 }
 
 /* ─── Component layer ────────────────────────────────────────────────── */

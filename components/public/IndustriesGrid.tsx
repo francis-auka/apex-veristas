@@ -11,7 +11,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
 
 export default function IndustriesGrid() {
   return (
-    <section className="section" style={{ background: "#F5F7FA" }}>
+    <section className="section-responsive" style={{ background: "#F5F7FA" }}>
       <div className="container-xl">
         <div className="mb-14 text-center">
           <span className="badge-green mb-4 inline-block">Industries We Serve</span>
@@ -24,7 +24,7 @@ export default function IndustriesGrid() {
           </p>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="responsive-grid responsive-grid-2 responsive-grid-4">
           {INDUSTRIES.map((ind) => {
             const Icon = ICON_MAP[ind.icon] ?? HardHat;
             return (

@@ -76,7 +76,7 @@ export default function ResourcesPage() {
   return (
     <div style={{ paddingTop: 80 }}>
       {/* Hero */}
-      <section style={{ background: "#1B2A4A", padding: "80px 0" }}>
+      <section className="section-responsive" style={{ background: "#1B2A4A" }}>
         <div className="container-xl" style={{ textAlign: "center" }}>
           <span style={{
             display: "inline-flex", alignItems: "center", padding: "4px 14px", marginBottom: 20,
@@ -93,8 +93,8 @@ export default function ResourcesPage() {
       </section>
 
       {/* Filter tabs - visual only */}
-      <section style={{ background: "#fff", borderBottom: "1px solid #F3F4F6" }}>
-        <div className="container-xl" style={{ display: "flex", gap: 0 }}>
+      <section style={{ background: "#fff", borderBottom: "1px solid #F3F4F6", overflowX: "auto" }}>
+        <div className="container-xl" style={{ display: "flex", gap: 0, minWidth: "max-content" }}>
           {CATEGORIES.map((c, i) => (
             <span key={c} style={{
               padding: "14px 20px", fontSize: 13, fontWeight: 600, cursor: "pointer",
@@ -106,9 +106,9 @@ export default function ResourcesPage() {
       </section>
 
       {/* Resource Cards */}
-      <section className="section" style={{ background: "#F5F7FA" }}>
+      <section className="section-responsive" style={{ background: "#F5F7FA" }}>
         <div className="container-xl">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(340px,1fr))", gap: 2, background: "rgba(27,42,74,0.06)" }}>
+          <div className="responsive-grid responsive-grid-2 responsive-grid-3" style={{ gap: 2, background: "rgba(27,42,74,0.06)" }}>
             {RESOURCES.map((r) => (
               <div key={r.title} style={{ background: "#fff", padding: 32, display: "flex", flexDirection: "column" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
@@ -134,18 +134,18 @@ export default function ResourcesPage() {
       </section>
 
       {/* Newsletter */}
-      <section style={{ background: "#fff", padding: "72px 0" }}>
+      <section className="section-responsive" style={{ background: "#fff" }}>
         <div className="container-xl" style={{ maxWidth: 640, textAlign: "center" }}>
           <BookOpen style={{ width: 40, height: 40, color: "#2E7D32", margin: "0 auto 16px" }} />
           <h2 style={{ fontSize: 24, fontWeight: 800, color: "#1B2A4A", marginBottom: 10 }}>Get new resources first</h2>
           <p style={{ fontSize: 14, color: "#6B7280", marginBottom: 28 }}>Practical HSEQ content, released monthly. No spam. Unsubscribe anytime.</p>
-          <form style={{ display: "flex", gap: 0, maxWidth: 480, margin: "0 auto" }}>
+          <form style={{ display: "flex", flexWrap: "wrap", gap: 0, maxWidth: 480, margin: "0 auto" }}>
             <input
               type="email"
               placeholder="you@company.com"
-              style={{ flex: 1, padding: "12px 16px", fontSize: 14, border: "1px solid #D1D5DB", borderRight: "none", outline: "none", color: "#1A1A2E" }}
+              style={{ flex: 1, padding: "12px 16px", minWidth: 200, fontSize: 14, border: "1px solid #D1D5DB", outline: "none", color: "#1A1A2E" }}
             />
-            <Link href="/register" className="btn-primary" style={{ fontSize: 13, padding: "12px 20px", whiteSpace: "nowrap" }}>
+            <Link href="/register" className="btn-primary" style={{ fontSize: 13, padding: "12px 20px", whiteSpace: "nowrap", flexGrow: 1, justifyContent: "center" }}>
               Subscribe
             </Link>
           </form>

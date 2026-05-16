@@ -97,7 +97,6 @@ export default function Navbar() {
             background: "transparent",
             border: "none",
             cursor: "pointer",
-            display: "none",
           }}
           className="lg:hidden"
           onClick={() => setOpen(!open)}

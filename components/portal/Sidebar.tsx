@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import { useState } from "react";
 import { PORTAL_NAV } from "@/constants/navigation";
+import { usePortalStore } from "@/store/portalStore";
 import {
   LayoutDashboard, ShieldCheck, FolderOpen, ClipboardList, AlertTriangle,
   GraduationCap, CheckSquare, BarChart2, MessageSquare, Settings,
@@ -21,20 +22,36 @@ export default function Sidebar() {
   const { data: session } = useSession();
   const user = session?.user;
 
+  const { sidebarOpen, setSidebarOpen } = usePortalStore();
+
   return (
-    <aside
-      style={{
-        position: "relative",
-        display: "flex",
-        flexDirection: "column",
-        width: collapsed ? 56 : 240,
-        minHeight: "100vh",
-        background: "#111E35",
-        borderRight: "1px solid rgba(255,255,255,0.06)",
-        transition: "width 0.25s ease",
-        flexShrink: 0,
-      }}
-    >
+    <>
+      {/* Mobile Backdrop */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      <aside
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: 50,
+          display: "flex",
+          flexDirection: "column",
+          width: collapsed ? 64 : 240,
+          height: "100vh",
+          background: "#111E35",
+          borderRight: "1px solid rgba(255,255,255,0.06)",
+          transition: "transform 0.3s ease, width 0.25s ease",
+          flexShrink: 0,
+          transform: sidebarOpen ? "translateX(0)" : "translateX(-100%)",
+        }}
+        className="lg:relative lg:translate-x-0"
+      >
       {/* Logo strip */}
       <div style={{
         display: "flex",
@@ -129,5 +146,6 @@ export default function Sidebar() {
         }
       </button>
     </aside>
+    </>
   );
 }

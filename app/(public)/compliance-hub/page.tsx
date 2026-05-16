@@ -48,7 +48,7 @@ export default function ComplianceHubPage() {
   return (
     <div style={{ paddingTop: 80 }}>
       {/* Hero */}
-      <section style={{ background: "#1B2A4A", padding: "80px 0" }}>
+      <section className="section-responsive" style={{ background: "#1B2A4A" }}>
         <div className="container-xl" style={{ textAlign: "center" }}>
           <span style={{
             display: "inline-flex", alignItems: "center", padding: "4px 14px", marginBottom: 20,
@@ -65,12 +65,12 @@ export default function ComplianceHubPage() {
       </section>
 
       {/* Regulatory Frameworks */}
-      <section className="section" style={{ background: "#F5F7FA" }}>
+      <section className="section-responsive" style={{ background: "#F5F7FA" }}>
         <div className="container-xl">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <h2 className="heading-section">Supported Regulatory Frameworks</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(480px,1fr))", gap: 2, background: "rgba(27,42,74,0.06)" }}>
+          <div className="responsive-grid responsive-grid-2" style={{ gap: 2, background: "rgba(27,42,74,0.06)" }}>
             {REGULATIONS.map((r) => (
               <div key={r.country} style={{ background: "#fff", padding: 36 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24, paddingBottom: 16, borderBottom: `2px solid ${r.color}` }}>
@@ -98,7 +98,7 @@ export default function ComplianceHubPage() {
       </section>
 
       {/* Regulatory Updates */}
-      <section className="section" style={{ background: "#fff" }}>
+      <section className="section-responsive" style={{ background: "#fff" }}>
         <div className="container-xl" style={{ maxWidth: 800 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 32 }}>
             <h2 style={{ fontSize: 22, fontWeight: 800, color: "#1B2A4A" }}>Recent Regulatory Updates</h2>
@@ -123,7 +123,7 @@ export default function ComplianceHubPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "#1B2A4A", padding: "80px 0", textAlign: "center" }}>
+      <section className="section-responsive" style={{ background: "#1B2A4A", textAlign: "center" }}>
         <div className="container-xl">
           <h2 style={{ fontSize: 28, fontWeight: 900, color: "#fff", marginBottom: 12 }}>Stay ahead of every regulatory change</h2>
           <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", marginBottom: 32 }}>Platform subscribers receive automated alerts when their regulations are updated.</p>

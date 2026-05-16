@@ -24,9 +24,10 @@ interface PortalState {
   uploadModalOpen:    boolean;
   setUploadModalOpen: (open: boolean) => void;
 
-  // Quick-action panel
-  quickActionsOpen:    boolean;
-  setQuickActionsOpen:(open: boolean) => void;
+  // Sidebar
+  sidebarOpen:    boolean;
+  setSidebarOpen: (open: boolean) => void;
+  toggleSidebar:  () => void;
 }
 
 export const usePortalStore = create<PortalState>((set) => ({
@@ -45,8 +46,12 @@ export const usePortalStore = create<PortalState>((set) => ({
   setSearchQuery: (searchQuery) => set({ searchQuery }),
 
   uploadModalOpen:    false,
-  setUploadModalOpen: (uploadModalOpen) => set({ uploadModalOpen }),
+  setUploadModalOpen: (uploadModalOpen: boolean) => set({ uploadModalOpen }),
+
+  sidebarOpen:    false,
+  setSidebarOpen: (sidebarOpen: boolean) => set({ sidebarOpen }),
+  toggleSidebar:  () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
 
   quickActionsOpen:    false,
-  setQuickActionsOpen:(quickActionsOpen) => set({ quickActionsOpen }),
+  setQuickActionsOpen:(quickActionsOpen: boolean) => set({ quickActionsOpen }),
 }));

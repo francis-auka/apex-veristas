@@ -13,11 +13,11 @@ export default async function PortalLayout({ children }: { children: React.React
 
   return (
     <SessionProvider session={session}>
-      <div className="flex min-h-screen" style={{ background: "#F5F7FA" }}>
+      <div className="min-h-screen" style={{ background: "#F5F7FA" }}>
         <Sidebar />
-        <div className="flex flex-1 flex-col overflow-hidden">
+        <div className="flex flex-1 flex-col overflow-hidden lg:pl-60">
           <Topbar />
-          <main className="flex-1 overflow-y-auto p-6">
+          <main className="flex-1 overflow-y-auto p-4 sm:p-6">
             <PageTransition>{children}</PageTransition>
           </main>
         </div>

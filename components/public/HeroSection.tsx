@@ -30,6 +30,7 @@ export default function HeroSection() {
 
   return (
     <section
+      className="section-responsive"
       style={{
         position: "relative",
         minHeight: "100vh",
@@ -38,7 +39,6 @@ export default function HeroSection() {
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
-        paddingTop: 64,
         background: "linear-gradient(160deg,#0C1828 0%,#1B2A4A 50%,#122115 100%)",
       }}
     >
@@ -81,9 +81,9 @@ export default function HeroSection() {
             </div>
 
             <h1 style={{
-              fontSize: "clamp(2.5rem,5vw,4rem)",
+              fontSize: "clamp(2.2rem,6vw,4rem)",
               fontWeight: 900,
-              lineHeight: 1.08,
+              lineHeight: 1.05,
               letterSpacing: "-0.03em",
               color: "#fff",
               marginBottom: 24,
@@ -99,7 +99,7 @@ export default function HeroSection() {
               {" "}& Virtual
             </h1>
 
-            <p style={{ fontSize: 17, lineHeight: 1.65, color: "rgba(255,255,255,0.68)", marginBottom: 32, maxWidth: 520 }}>
+            <p style={{ fontSize: "clamp(1rem,1.2vw,1.1rem)", lineHeight: 1.65, color: "rgba(255,255,255,0.68)", marginBottom: 32, maxWidth: 520 }}>
               Apex Veritas is your all-in-one Virtual HSEQ platform — manage compliance,
               documents, audits, incidents and training for Kenya and UAE from one powerful dashboard.
             </p>
@@ -229,22 +229,22 @@ export default function HeroSection() {
         <div style={{
           marginTop: 80,
           display: "grid",
-          gridTemplateColumns: "repeat(4,1fr)",
           background: "rgba(255,255,255,0.04)",
           border: "1px solid rgba(255,255,255,0.08)",
         }} className="grid-cols-2 lg:grid-cols-4">
           {STATS.map((s, i) => (
             <div key={s.label} style={{
-              padding: "24px 32px",
+              padding: "24px 20px",
               textAlign: "center",
-              borderRight: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none",
-            }}>
+              borderRight: (i % 2 === 0 || i < 3) ? "1px solid rgba(255,255,255,0.07)" : "none",
+              borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.07)" : "none",
+            }} className="sm:border-b-0 lg:border-r">
               <div style={{
-                fontSize: 30, fontWeight: 900,
+                fontSize: "clamp(1.5rem,3vw,2rem)", fontWeight: 900,
                 backgroundImage: "linear-gradient(90deg,#4CAF50,#66BB6A)",
                 WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
               }}>{s.value}</div>
-              <div style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.48)", marginTop: 4 }}>{s.label}</div>
+              <div style={{ fontSize: 10, fontWeight: 500, color: "rgba(255,255,255,0.48)", marginTop: 4, textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.label}</div>
             </div>
           ))}
         </div>

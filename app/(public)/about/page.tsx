@@ -49,7 +49,7 @@ export default function AboutPage() {
   return (
     <div style={{ paddingTop: 80 }}>
       {/* Hero */}
-      <section style={{ background: "#1B2A4A", padding: "80px 0" }}>
+      <section className="section-responsive" style={{ background: "#1B2A4A" }}>
         <div className="container-xl">
           <div style={{ maxWidth: 680 }}>
             <span style={{
@@ -68,9 +68,9 @@ export default function AboutPage() {
       </section>
 
       {/* Stats */}
-      <section style={{ background: "#2E7D32", padding: "40px 0" }}>
+      <section style={{ background: "#2E7D32", padding: "2rem 0" }}>
         <div className="container-xl">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 2, background: "rgba(0,0,0,0.1)" }}>
+          <div className="responsive-grid responsive-grid-2 responsive-grid-4" style={{ gap: 2, background: "rgba(0,0,0,0.1)" }}>
             {STATS.map((s) => (
               <div key={s.label} style={{ background: "#2E7D32", padding: "28px 24px", textAlign: "center" }}>
                 <div style={{ fontSize: 36, fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>{s.number}</div>
@@ -82,9 +82,9 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="section" style={{ background: "#fff" }}>
+      <section className="section-responsive" style={{ background: "#fff" }}>
         <div className="container-xl" style={{ maxWidth: 820 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
+          <div className="responsive-grid responsive-grid-2" style={{ gap: 60, alignItems: "center" }}>
             <div>
               <h2 style={{ fontSize: 26, fontWeight: 800, color: "#1B2A4A", marginBottom: 16 }}>Our Story</h2>
               <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.75, marginBottom: 16 }}>
@@ -116,10 +116,10 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="section" style={{ background: "#F5F7FA" }}>
+      <section className="section-responsive" style={{ background: "#F5F7FA" }}>
         <div className="container-xl">
           <h2 style={{ fontSize: 26, fontWeight: 800, color: "#1B2A4A", textAlign: "center", marginBottom: 48 }}>What We Stand For</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 2, background: "rgba(27,42,74,0.06)" }}>
+          <div className="responsive-grid responsive-grid-2 responsive-grid-4" style={{ gap: 2, background: "rgba(27,42,74,0.06)" }}>
             {VALUES.map((v) => (
               <div key={v.title} style={{ background: "#fff", padding: 32 }}>
                 <div style={{ width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", background: `${v.color}12`, marginBottom: 16 }}>
@@ -154,7 +154,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "#1B2A4A", padding: "80px 0", textAlign: "center" }}>
+      <section className="section-responsive" style={{ background: "#1B2A4A", textAlign: "center" }}>
         <div className="container-xl">
           <h2 style={{ fontSize: 28, fontWeight: 900, color: "#fff", marginBottom: 12 }}>Let&apos;s make your organisation safer.</h2>
           <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", marginBottom: 32 }}>Start with a free trial or talk directly to our team.</p>

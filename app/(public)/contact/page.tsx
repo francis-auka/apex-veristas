@@ -47,7 +47,7 @@ export default function ContactPage() {
   return (
     <div style={{ paddingTop: 80 }}>
       {/* Hero */}
-      <section style={{ background: "#1B2A4A", padding: "80px 0" }}>
+      <section className="section-responsive" style={{ background: "#1B2A4A" }}>
         <div className="container-xl" style={{ textAlign: "center" }}>
           <span style={{
             display: "inline-flex", alignItems: "center", padding: "4px 14px", marginBottom: 20,
@@ -64,9 +64,9 @@ export default function ContactPage() {
       </section>
 
       {/* Main */}
-      <section className="section" style={{ background: "#F5F7FA" }}>
+      <section className="section-responsive" style={{ background: "#F5F7FA" }}>
         <div className="container-xl">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 2, background: "rgba(27,42,74,0.06)", alignItems: "start" }}>
+          <div className="flex flex-col gap-0.5 overflow-hidden lg:grid lg:grid-cols-[1fr_1.4fr]" style={{ background: "rgba(27,42,74,0.06)" }}>
 
             {/* Left: Offices */}
             <div style={{ display: "flex", flexDirection: "column", gap: 2, background: "rgba(27,42,74,0.06)" }}>
@@ -119,7 +119,7 @@ export default function ContactPage() {
                 <>
                   <h2 style={{ fontSize: 20, fontWeight: 800, color: "#1B2A4A", marginBottom: 24 }}>Send us a message</h2>
                   <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                    <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2">
                       <div>
                         <label style={{ display: "block", fontSize: 11, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6 }}>Full Name *</label>
                         <input name="name" required value={form.name} onChange={handleChange} placeholder="Jane Doe" style={{ width: "100%", padding: "11px 14px", fontSize: 13, border: "1px solid #D1D5DB", outline: "none", color: "#1A1A2E" }} />

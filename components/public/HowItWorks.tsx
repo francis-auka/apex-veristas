@@ -33,7 +33,7 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section className="section" style={{ background: "#fff" }}>
+    <section className="section-responsive" style={{ background: "#fff" }}>
       <div className="container-xl">
         <div className="mb-14 text-center">
           <span className="badge-navy mb-4 inline-block">How It Works</span>
@@ -57,7 +57,7 @@ export default function HowItWorks() {
             }}
           />
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="responsive-grid responsive-grid-2 responsive-grid-4" style={{ gap: "2rem" }}>
             {STEPS.map((step, i) => {
               const Icon = step.icon;
               return (

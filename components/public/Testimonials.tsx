@@ -44,7 +44,7 @@ export default function Testimonials() {
   const next = () => setCurrent((c) => (c + 1) % TESTIMONIALS.length);
 
   return (
-    <section className="section" style={{ background: "#fff" }}>
+    <section className="section-responsive" style={{ background: "#fff" }}>
       <div className="container-xl">
         <div className="mb-14 text-center">
           <span className="badge-green mb-4 inline-block">Client Stories</span>
