@@ -28,6 +28,10 @@ interface PortalState {
   sidebarOpen:    boolean;
   setSidebarOpen: (open: boolean) => void;
   toggleSidebar:  () => void;
+
+  // Quick actions
+  quickActionsOpen:    boolean;
+  setQuickActionsOpen: (open: boolean) => void;
 }
 
 export const usePortalStore = create<PortalState>((set) => ({
