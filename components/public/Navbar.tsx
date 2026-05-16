@@ -23,7 +23,9 @@ export default function Navbar() {
         right: 0,
         zIndex: 50,
         transition: "all 0.3s",
-        background: scrolled ? "rgba(255,255,255,0.97)" : "transparent",
+        background: scrolled
+          ? "rgba(255,255,255,0.97)"
+          : "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 100%)",
         boxShadow: scrolled ? "0 1px 0 rgba(27,42,74,0.1)" : "none",
         backdropFilter: scrolled ? "blur(12px)" : "none",
       }}
@@ -59,9 +61,10 @@ export default function Navbar() {
               style={{
                 padding: "6px 14px",
                 fontSize: 13,
-                fontWeight: 500,
-                color: scrolled ? "#1A1A2E" : "rgba(255,255,255,0.85)",
+                fontWeight: 600,
+                color: scrolled ? "#1A1A2E" : "#fff",
                 transition: "color 0.15s",
+                textShadow: scrolled ? "none" : "0 1px 3px rgba(0,0,0,0.4)",
               }}
               className="hover:text-green-dark transition-colors"
             >
@@ -74,7 +77,11 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           <Link
             href="/login"
-            style={{ fontSize: 13, fontWeight: 600, color: scrolled ? "#1B2A4A" : "rgba(255,255,255,0.85)" }}
+            style={{
+              fontSize: 13, fontWeight: 600,
+              color: scrolled ? "#1B2A4A" : "#fff",
+              textShadow: scrolled ? "none" : "0 1px 3px rgba(0,0,0,0.4)",
+            }}
           >
             Sign in
           </Link>

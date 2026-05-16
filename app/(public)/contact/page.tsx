@@ -135,9 +135,9 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <label style={{ display: "block", fontSize: 11, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6 }}>Topic *</label>
-                      <select name="topic" required value={form.topic} onChange={handleChange} style={{ width: "100%", padding: "11px 14px", fontSize: 13, border: "1px solid #D1D5DB", outline: "none", color: form.topic ? "#1A1A2E" : "#9CA3AF", background: "#fff" }}>
-                        <option value="">Select a topic…</option>
-                        {TOPICS.map((t) => <option key={t} value={t}>{t}</option>)}
+                      <select name="topic" required value={form.topic} onChange={handleChange} style={{ width: "100%", padding: "11px 14px", fontSize: 13, border: "1px solid #D1D5DB", outline: "none", color: form.topic ? "#1A1A2E" : "#9CA3AF", background: "#fff", appearance: "auto" as const }}>
+                        <option value="" style={{ color: "#9CA3AF" }}>Select a topic…</option>
+                        {TOPICS.map((t) => <option key={t} value={t} style={{ color: "#1A1A2E" }}>{t}</option>)}
                       </select>
                     </div>
                     <div>

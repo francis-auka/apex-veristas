@@ -50,6 +50,16 @@ export default function RegisterPage() {
     border: "1px solid rgba(255,255,255,0.14)",
     color: "#fff", outline: "none",
   };
+  // Selects must use a solid background — browser <option> elements
+  // always render against the OS default (usually white), so transparent
+  // backgrounds produce invisible white-on-white text.
+  const selectStyle = {
+    width: "100%", padding: "11px 14px", fontSize: 14,
+    background: "#1B2A4A",
+    border: "1px solid rgba(255,255,255,0.2)",
+    color: "#fff", outline: "none", cursor: "pointer",
+    appearance: "auto" as const,
+  };
   const labelStyle = {
     display: "block", marginBottom: 6, fontSize: 11, fontWeight: 700,
     color: "rgba(255,255,255,0.6)", textTransform: "uppercase" as const, letterSpacing: "0.07em",
@@ -146,17 +156,17 @@ export default function RegisterPage() {
               </div>
               <div>
                 <label style={labelStyle}>Country</label>
-                <select style={{ ...inputStyle, cursor: "pointer" }} value={form.country} onChange={update("country")}>
-                  <option value="Kenya">🇰🇪 Kenya</option>
-                  <option value="UAE">🇦🇪 UAE</option>
+                <select style={selectStyle} value={form.country} onChange={update("country")}>
+                  <option value="Kenya" style={{ background: "#1B2A4A", color: "#fff" }}>🇰🇪 Kenya</option>
+                  <option value="UAE"   style={{ background: "#1B2A4A", color: "#fff" }}>🇦🇪 UAE</option>
                 </select>
               </div>
               <div>
                 <label style={labelStyle}>Industry</label>
-                <select style={{ ...inputStyle, cursor: "pointer" }} value={form.industry} onChange={update("industry")} required>
-                  <option value="">Select your industry…</option>
+                <select style={selectStyle} value={form.industry} onChange={update("industry")} required>
+                  <option value="" style={{ background: "#1B2A4A", color: "rgba(255,255,255,0.45)" }}>Select your industry…</option>
                   {["Construction","Oil & Gas","Manufacturing","Hospitality","Healthcare","Logistics & Transport","Education","Financial Services"].map(i => (
-                    <option key={i} value={i}>{i}</option>
+                    <option key={i} value={i} style={{ background: "#1B2A4A", color: "#fff" }}>{i}</option>
                   ))}
                 </select>
               </div>
