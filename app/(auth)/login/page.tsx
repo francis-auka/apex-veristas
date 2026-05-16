@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ShieldCheck, Eye, EyeOff, Loader2 } from "lucide-react";
 
-export default function LoginPage() {
+// ── Inner component that uses useSearchParams ──────────────────────────────
+function LoginForm() {
   const router       = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl  = searchParams.get("callbackUrl") ?? "/portal";
@@ -147,5 +148,14 @@ export default function LoginPage() {
         </Link>
       </p>
     </div>
+  );
+}
+
+// ── Page wrapper with Suspense boundary ────────────────────────────────────
+export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginForm />
+    </Suspense>
   );
 }

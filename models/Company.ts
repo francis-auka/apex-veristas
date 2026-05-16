@@ -53,7 +53,6 @@ const CompanySchema = new Schema<ICompany>(
   { timestamps: true }
 );
 
-CompanySchema.index({ slug: 1 });
 CompanySchema.index({ country: 1, status: 1 });
 
 const Company: Model<ICompany> =

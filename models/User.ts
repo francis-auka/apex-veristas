@@ -44,7 +44,6 @@ const UserSchema = new Schema<IUser>(
   { timestamps: true }
 );
 
-UserSchema.index({ email: 1 });
 UserSchema.index({ company: 1 });
 
 const User: Model<IUser> =
