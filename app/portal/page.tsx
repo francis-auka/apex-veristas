@@ -6,7 +6,7 @@ import ActionCard        from "@/components/portal/ActionCard";
 import {
   AlertTriangle, Clock, FileWarning, GraduationCap,
   CheckSquare, ShieldAlert, TrendingUp, Calendar,
-  ArrowRight,
+  ArrowRight, MessageSquare
 } from "lucide-react";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
@@ -22,6 +22,67 @@ export default function PortalDashboard() {
     if (h < 17) return "Good afternoon";
     return "Good evening";
   })();
+
+  if (session?.user?.role === "professional") {
+    return (
+      <div className="space-y-8 animate-in fade-in duration-500">
+        <div 
+          className="relative overflow-hidden rounded-2xl px-8 py-10"
+          style={{ background: "linear-gradient(135deg,#1B2A4A 0%,#243B55 100%)" }}
+        >
+          <div className="relative z-10">
+            <p className="mb-2 text-sm font-medium opacity-70 text-white">{greeting},</p>
+            <h2 className="text-3xl font-black text-white">{userName} 👋</h2>
+            <p className="mt-2 text-sm opacity-70 text-white max-w-lg">
+              Welcome to your professional dashboard. Here you can manage your consultant profile, 
+              view hiring requests, and update your HSEQ credentials.
+            </p>
+            <div className="mt-8 flex gap-4">
+              <Link href="/portal/professional-profile" className="px-6 py-2.5 bg-green-600 text-white font-bold rounded-lg text-sm hover:bg-green-500 transition-all">
+                Edit Profile
+              </Link>
+              <Link href="/portal/messages" className="px-6 py-2.5 bg-white/10 text-white font-bold rounded-lg text-sm hover:bg-white/20 transition-all border border-white/10">
+                View Messages
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          <div className="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm text-center space-y-4">
+             <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto">
+               <TrendingUp className="w-6 h-6" />
+             </div>
+             <h3 className="font-bold text-brand-navy">Marketplace Performance</h3>
+             <p className="text-xs text-gray-500">Complete your profile to start appearing in search results and receiving hiring requests.</p>
+             <div className="pt-4 text-2xl font-black text-gray-900">0 Views</div>
+          </div>
+
+          <div className="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm text-center space-y-4">
+             <div className="w-12 h-12 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto">
+               <ShieldAlert className="w-6 h-6" />
+             </div>
+             <h3 className="font-bold text-brand-navy">Verification Status</h3>
+             <p className="text-xs text-gray-500">Upload your practicing licenses and certificates to get the "Verified" badge.</p>
+             <div className="pt-4">
+                <span className="px-3 py-1 bg-yellow-50 text-yellow-700 text-[10px] font-black uppercase rounded-full border border-yellow-100">
+                  Pending Review
+                </span>
+             </div>
+          </div>
+
+          <div className="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm text-center space-y-4">
+             <div className="w-12 h-12 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mx-auto">
+               <MessageSquare className="w-6 h-6" />
+             </div>
+             <h3 className="font-bold text-brand-navy">Client Requests</h3>
+             <p className="text-xs text-gray-500">Respond to messages and service requests from clients looking for your expertise.</p>
+             <div className="pt-4 text-2xl font-black text-gray-900">0 Requests</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">

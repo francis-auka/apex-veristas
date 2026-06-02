@@ -20,6 +20,8 @@ export const PORTAL_NAV = [
   { label: "Tasks",       href: "/portal/tasks",        icon: "CheckSquare"    },
   { label: "Reports",     href: "/portal/reports",      icon: "BarChart2"      },
   { label: "Messages",    href: "/portal/messages",     icon: "MessageSquare"  },
+  { label: "Expert Marketplace", href: "/portal/experts", icon: "Users" },
+  { label: "Professional Profile", href: "/portal/professional-profile", icon: "UserCircle" },
   { label: "Settings",    href: "/portal/settings",     icon: "Settings"       },
 ] as const;
 

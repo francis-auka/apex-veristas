@@ -8,12 +8,12 @@ import { usePortalStore } from "@/store/portalStore";
 import {
   LayoutDashboard, ShieldCheck, FolderOpen, ClipboardList, AlertTriangle,
   GraduationCap, CheckSquare, BarChart2, MessageSquare, Settings,
-  LogOut, ChevronLeft, ChevronRight, ShieldAlert,
+  LogOut, ChevronLeft, ChevronRight, ShieldAlert, Users, UserCircle
 } from "lucide-react";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   LayoutDashboard, ShieldCheck, FolderOpen, ClipboardList, AlertTriangle,
-  GraduationCap, CheckSquare, BarChart2, MessageSquare, Settings,
+  GraduationCap, CheckSquare, BarChart2, MessageSquare, Settings, Users, UserCircle
 };
 
 export default function Sidebar() {
@@ -21,6 +21,15 @@ export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
   const { data: session } = useSession();
   const user = session?.user;
+
+  // Filter or augment navigation based on role
+  const navItems = PORTAL_NAV.filter(item => {
+    // If user is professional, they don't need to see the expert marketplace (they are in it)
+    if (user?.role === "professional" && item.href === "/portal/experts") return false;
+    // Clients don't need to see professional-only pages
+    if (user?.role !== "professional" && item.href === "/portal/professional-profile") return false;
+    return true;
+  });
 
   const { sidebarOpen, setSidebarOpen } = usePortalStore();
 
@@ -72,7 +81,7 @@ export default function Sidebar() {
 
       {/* Nav */}
       <nav style={{ flex: 1, overflowY: "auto", padding: "12px 8px" }}>
-        {PORTAL_NAV.map((item) => {
+        {navItems.map((item) => {
           const Icon = ICON_MAP[item.icon] ?? LayoutDashboard;
           const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
           return (

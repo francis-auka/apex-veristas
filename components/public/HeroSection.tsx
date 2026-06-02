@@ -89,7 +89,7 @@ export default function HeroSection() {
               maxWidth: 580,
             }}>
               Based in Nairobi and serving companies worldwide. Our virtual HSEQ platform centralises 
-              documents, audits, incidents and training with global standards and local expertise.
+              compliance and connects you with verified safety experts from our global expert marketplace.
             </p>
 
             {/* Trust */}
