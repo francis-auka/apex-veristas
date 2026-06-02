@@ -26,9 +26,31 @@ export default function MessagesPage() {
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
-    if (session?.user?.email) {
-      fetchMessages();
-    }
+    if (!session?.user?.email) return;
+
+    fetchMessages();
+
+    // Subscribe to real-time changes
+    const channel = supabase
+      .channel('realtime_messages')
+      .on(
+        'postgres_changes', 
+        { 
+          event: 'INSERT', 
+          schema: 'public', 
+          table: 'messages',
+          filter: `receiver_email=eq.${session.user.email}` 
+        }, 
+        (payload) => {
+          console.log('New message received!', payload);
+          setMessages(prev => [payload.new as Message, ...prev]);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, [session]);
 
   async function fetchMessages() {
@@ -63,7 +85,20 @@ export default function MessagesPage() {
   async function handleSendReply(e: React.FormEvent) {
     e.preventDefault();
     if (!reply.trim() || !selectedChat) return;
-    setSending(true);
+    
+    const newMessage: Message = {
+      id: Math.random().toString(), // temporary id
+      sender_email: session?.user?.email || "",
+      receiver_email: selectedChat,
+      content: reply,
+      created_at: new Date().toISOString(),
+      is_read: false
+    };
+
+    // Optimistic update
+    setMessages(prev => [newMessage, ...prev]);
+    setReply("");
+
     try {
       const { error } = await supabase.from("messages").insert({
         sender_email: session?.user?.email,
@@ -71,13 +106,10 @@ export default function MessagesPage() {
         content: reply,
       });
       if (error) throw error;
-      setReply("");
-      fetchMessages();
     } catch (err) {
       toast.error("Failed to send message");
-    } finally {
-      setSending(false);
-    }
+      fetchMessages(); // Rollback if error
+    } 
   }
 
   if (loading) return (
