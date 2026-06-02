@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const search   = searchParams.get("search")   || "";
     const industry = searchParams.get("industry")  || "";
-    const verified = searchParams.get("verified")  || "true";
+    const verified = searchParams.get("verified");
 
     let query = supabase
       .from("pros")
@@ -20,6 +20,8 @@ export async function GET(req: NextRequest) {
 
     if (verified === "true") {
       query = query.eq("is_verified", true);
+    } else if (verified === "false") {
+      query = query.eq("is_verified", false);
     }
 
     if (search) {

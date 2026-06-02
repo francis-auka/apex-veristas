@@ -102,9 +102,13 @@ export default function ExpertsDirectory() {
                       <span className="text-xl font-bold text-gray-400">{pro.fullName[0]}</span>
                     )}
                   </div>
-                  {pro.isVerified && (
+                  {pro.isVerified ? (
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-green-50 text-green-700 border border-green-100 uppercase tracking-wider">
                       <Award className="w-3 h-3" /> Verified
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-yellow-50 text-yellow-700 border border-yellow-100 uppercase tracking-wider">
+                      <Loader2 className="w-3 h-3" /> Pending Verification
                     </span>
                   )}
                 </div>
