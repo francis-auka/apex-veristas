@@ -60,13 +60,6 @@ export default function HeroSection() {
           <div>
             {/* Country + tagline badges */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 24 }}>
-              {["🇰🇪 Kenya", "🇦🇪 UAE"].map(b => (
-                <span key={b} style={{
-                  display: "inline-flex", alignItems: "center", gap: 6,
-                  padding: "5px 14px", fontSize: 12, fontWeight: 600,
-                  background: "rgba(76,175,80,0.12)", color: "#66BB6A",
-                  border: "1px solid rgba(76,175,80,0.25)",
-                }}>{b}</span>
               {[ "Worldwide Virtual Services", "Kenyan-Based HQ" ].map(b => (
                 <div key={b} className="flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-3 py-1">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-white/50">{b}</span>
