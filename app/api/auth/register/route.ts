@@ -64,7 +64,8 @@ export async function POST(req: NextRequest) {
 
       if (sbError) {
         console.error("[register] Supabase insert error:", sbError);
-        return NextResponse.json(apiError(`Supabase error: ${sbError.message}`), { status: 500 });
+        const detail = sbError.message || JSON.stringify(sbError);
+        return NextResponse.json(apiError(`Supabase connection failed: ${detail}`), { status: 500 });
       }
 
       return NextResponse.json(
