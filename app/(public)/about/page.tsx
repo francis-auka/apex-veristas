@@ -4,7 +4,7 @@ import { ArrowRight, Shield, Globe, Users, Target, Award, Zap } from "lucide-rea
 
 export const metadata: Metadata = {
   title: "About Apex Veritas | Virtual HSEQ Solutions",
-  description: "Apex Veritas is a Virtual HSEQ consulting firm headquartered in Nairobi, Kenya, serving clients across East Africa and the UAE. Safety Without Borders.",
+  description: "Apex Veritas is a Virtual HSEQ consulting firm headquartered in Nairobi, Kenya, serving clients worldwide through our borderless compliance platform. Safety Without Borders.",
 };
 
 const VALUES = [
@@ -17,7 +17,7 @@ const VALUES = [
 const STATS = [
   { number: "500+", label: "Companies Served" },
   { number: "12", label: "Industries Covered" },
-  { number: "2", label: "Countries: Kenya & UAE" },
+  { number: "Global", label: "Availability" },
   { number: "98%", label: "Client Retention Rate" },
 ];
 
@@ -61,7 +61,7 @@ export default function AboutPage() {
               We believe safety expertise should be accessible to every organisation.
             </h1>
             <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", lineHeight: 1.7 }}>
-              Apex Veritas was founded in Nairobi with a simple premise: that companies in Kenya and the UAE deserve world-class HSEQ support — without the overhead of a full-time in-house team. We combine deep regulatory expertise with modern technology to deliver compliance that&apos;s real, practical, and always on.
+              Apex Veritas was founded in Nairobi with a simple premise: that companies worldwide deserve world-class HSEQ support — without the overhead of a full-time in-house team. We combine deep regulatory expertise with modern technology to deliver global compliance that's real, practical, and always on.
             </p>
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function AboutPage() {
             <div>
               <h2 style={{ fontSize: 26, fontWeight: 800, color: "#1B2A4A", marginBottom: 16 }}>Our Story</h2>
               <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.75, marginBottom: 16 }}>
-                Apex Veritas began as a traditional HSEQ consulting practice in 2018, serving construction and oil & gas companies across Kenya. We quickly noticed a gap: our clients needed compliance systems that were both rigorous and affordable — and nothing on the market was built for the East African or Gulf context.
+                Apex Veritas began as a traditional HSEQ consulting practice in 2018, serving construction and oil & gas companies in Kenya. We quickly noticed a global gap: companies needed compliance systems that were both rigorous and affordable — but traditional consulting was too slow and too local. We went virtual to serve the world from our Nairobi HQ.
               </p>
               <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.75, marginBottom: 16 }}>
                 In 2022, we launched our digital platform — combining our institutional knowledge of DOSH, NEMA, OSHAD-SF, and Dubai regulations with software that automates the repetitive compliance work, so organisations can focus on what matters: keeping their people safe.

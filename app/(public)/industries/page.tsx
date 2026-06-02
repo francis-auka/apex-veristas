@@ -4,7 +4,7 @@ import { ArrowRight, Flame, Droplets, Building2, Truck, Factory, Zap, TreePine, 
 
 export const metadata: Metadata = {
   title: "Industries We Serve | Apex Veritas HSEQ",
-  description: "Apex Veritas delivers Virtual HSEQ compliance for Oil & Gas, Construction, Manufacturing, Logistics, and more across Kenya and UAE.",
+  description: "Apex Veritas delivers Virtual HSEQ compliance for Oil & Gas, Construction, Manufacturing, Logistics, and more across the globe.",
 };
 
 const INDUSTRIES = [
@@ -12,7 +12,7 @@ const INDUSTRIES = [
     icon: Flame,
     color: "#EF4444",
     title: "Oil & Gas",
-    region: "Kenya · UAE",
+    region: "Worldwide · Kenya roots",
     desc: "HSEQ compliance for upstream, midstream, and downstream operations. Manage SIMOPS, PTW, and contractor safety across multiple sites.",
     standards: ["OSHA 1910/1926", "ISO 45001", "NEMA Kenya", "UAE Federal"],
     stat: "43% of our clients",
@@ -21,7 +21,7 @@ const INDUSTRIES = [
     icon: Building2,
     color: "#6366F1",
     title: "Construction",
-    region: "Kenya · UAE",
+    region: "Worldwide · Kenya roots",
     desc: "Site safety management, incident reporting, and subcontractor compliance tracking for projects of any scale.",
     standards: ["OSHA Construction", "NCA Kenya", "Trakhees UAE", "ISO 45001"],
     stat: "Project-based billing",
@@ -30,7 +30,7 @@ const INDUSTRIES = [
     icon: Factory,
     color: "#F59E0B",
     title: "Manufacturing",
-    region: "Kenya · UAE",
+    region: "Worldwide · Kenya roots",
     desc: "Worker safety, chemical management, machine guarding, and environmental compliance rolled into one platform.",
     standards: ["ISO 45001", "ISO 14001", "NEMA Kenya", "EAD Abu Dhabi"],
     stat: "Reduce incidents by 60%",
@@ -102,9 +102,10 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* Industries Grid */}
-      <section className="section-responsive" style={{ background: "#F5F7FA" }}>
-        <div className="container-xl">
+      {/* Industry relevance */}
+      <section className="section-responsive bg-brand-navy" style={{ background: "#F5F7FA" }}>
+        <div className="container-xl text-center">
+          <h2 className="heading-section mb-12">Built for global high-stakes industries</h2>
           <div className="responsive-grid responsive-grid-2 responsive-grid-4" style={{ gap: 2, background: "rgba(27,42,74,0.06)" }}>
             {INDUSTRIES.map((ind) => (
               <div key={ind.title} style={{ background: "#fff", padding: 32 }}>

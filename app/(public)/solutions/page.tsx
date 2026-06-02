@@ -14,7 +14,7 @@ const SOLUTIONS = [
     bg: "rgba(46,125,50,0.08)",
     title: "Compliance Management",
     desc: "Track regulatory obligations across ISO 45001, ISO 14001, OSHA, NEMA, and more. Automated alerts keep your team ahead of deadlines.",
-    features: ["Regulation library (Kenya & UAE)", "Deadline tracking & alerts", "Evidence repository", "Compliance scoring"],
+    features: ["Regulation library (Global & Local)", "Deadline tracking & alerts", "Evidence repository", "Compliance scoring"],
     href: "/register",
   },
   {
@@ -87,9 +87,10 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      {/* Solutions Grid */}
-      <section className="section-responsive" style={{ background: "#F5F7FA" }}>
-        <div className="container-xl">
+      {/* Industry relevance */}
+      <section className="section-responsive bg-brand-navy" style={{ background: "#F5F7FA" }}>
+        <div className="container-xl text-center">
+          <h2 className="heading-section mb-12">Built for global high-stakes industries</h2>
           <div className="responsive-grid responsive-grid-2 responsive-grid-3" style={{ gap: 2, background: "rgba(27,42,74,0.06)" }}>
             {SOLUTIONS.map((s) => (
               <div key={s.title} style={{ background: "#fff", padding: 36, display: "flex", flexDirection: "column" }}>

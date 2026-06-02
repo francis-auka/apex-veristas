@@ -17,7 +17,7 @@ export default function SolutionCards() {
           </h2>
           <p style={{ maxWidth: 560, margin: "0 auto", color: "#6B7280", lineHeight: 1.65 }}>
             Purpose-built modules for Health, Safety, Environment and Quality — all connected, 
-            built for Kenya and UAE regulatory landscapes.
+            built for global regulatory landscapes with local expertise.
           </p>
         </div>
 

@@ -3,10 +3,10 @@ export const SOLUTIONS = [
     slug:        "compliance-management",
     title:       "Compliance Management",
     tagline:     "Stay ahead of regulations, always.",
-    description: "Track, manage, and evidence compliance across all applicable Kenya and UAE regulations from one central dashboard.",
+    description: "Track, manage, and evidence compliance across all applicable global and local regulations from one central dashboard.",
     icon:        "ShieldCheck",
     features: [
-      "Regulation library for Kenya (OSHA 2007, EMCA) and UAE (OSHAD-SF, EHS)",
+      "Regulation library for Global Standards (ISO) and Local Requirements (Kenya/UAE)",
       "Automated due-date reminders and escalations",
       "Evidence upload and audit trail",
       "Compliance score gauge and gap analysis reports",

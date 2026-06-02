@@ -19,8 +19,8 @@ export default function IndustriesGrid() {
             Built for your sector, ready for your regulator
           </h2>
           <p className="mx-auto max-w-xl text-base" style={{ color: "#6B7280" }}>
-            Whether you&apos;re in construction, healthcare, or hospitality — our
-            platform adapts to your industry&apos;s specific regulatory requirements.
+            Whether you're in construction, healthcare, or hospitality — our
+            platform adapts to your specific regulatory requirements, wherever you operate.
           </p>
         </div>
 

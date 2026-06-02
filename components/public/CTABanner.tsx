@@ -31,7 +31,7 @@ export default function CTABanner() {
               HSEQ compliance?
             </h2>
             <p className="mx-auto mb-10 max-w-xl text-base" style={{ color: "rgba(255,255,255,0.75)" }}>
-              Join hundreds of companies in Kenya and UAE that trust Apex Veritas
+              Join hundreds of companies worldwide that trust Apex Veritas
               to keep their teams safe, compliant and audit-ready — 24/7.
             </p>
 

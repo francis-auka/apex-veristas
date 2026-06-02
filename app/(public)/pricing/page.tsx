@@ -5,7 +5,7 @@ import { Check, X, ArrowRight, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Pricing | Apex Veritas HSEQ Platform",
-  description: "Simple, transparent pricing for virtual HSEQ compliance. Start free, scale as you grow. Plans for Kenya (KES) and UAE (AED).",
+  description: "Simple, transparent pricing for virtual HSEQ compliance. Start free, scale as you grow. Plans for global companies in across KES, AED, and USD.",
 };
 
 export default function PricingPage() {
@@ -24,7 +24,7 @@ export default function PricingPage() {
             One platform, every HSEQ need
           </h1>
           <p style={{ fontSize: 17, color: "rgba(255,255,255,0.6)", maxWidth: 520, margin: "0 auto 32px" }}>
-            No hidden fees. Cancel anytime. All plans include Kenya & UAE regulation libraries.
+            No hidden fees. Cancel anytime. All plans include Global (ISO) & Local (Kenya/UAE) regulation libraries.
           </p>
           {/* Currency bar */}
           <div style={{ display: "inline-flex", border: "1px solid rgba(255,255,255,0.15)", overflowX: "auto", maxWidth: "100%" }}>
@@ -134,7 +134,7 @@ export default function PricingPage() {
           {[
             ["Can I switch plans later?",  "Yes, you can upgrade or downgrade at any time. Changes are prorated and applied immediately."],
             ["Is there a free trial?",     "All plans come with a 14-day free trial. No credit card required to start."],
-            ["What currencies are supported?","We support KES (Kenya), AED (UAE), and USD. Currency is set at account creation."],
+            ["What currencies are supported?","We support KES, AED, and USD for global payments. You can select your preferred currency at account creation."],
             ["Can I add more users later?","Yes. Additional user seats can be purchased at any time from your billing settings."],
             ["Do you offer discounts?",    "Annual billing saves 20%. NGOs and government entities receive a 30% discount—contact us."],
           ].map(([q,a]) => (

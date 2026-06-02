@@ -30,13 +30,13 @@ export default function Footer() {
               </div>
             </Link>
             <p style={{ fontSize: 13, lineHeight: 1.7, color: "rgba(255,255,255,0.55)", marginBottom: 24 }}>
-              Safety Without Borders — empowering companies in Kenya and UAE with world-class virtual HSEQ compliance management.
+              Safety Without Borders — serving companies worldwide from our Kenya headquarters with world-class virtual HSEQ compliance management.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {[
                 { Icon: Mail,  text: "info@apexveritas.com", href: "mailto:info@apexveritas.com" },
                 { Icon: Phone, text: "+254 700 000 000 (KE) · +971 4 000 0000 (AE)" },
-                { Icon: MapPin,text: "Nairobi, Kenya · Dubai, UAE" },
+                { Icon: MapPin,text: "Nairobi, Kenya (HQ) · Remote Worldwide" },
               ].map(({ Icon, text, href }) => (
                 <div key={text} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
                   <Icon style={{ width: 14, height: 14, color: "#66BB6A", marginTop: 2, flexShrink: 0 }} />
@@ -86,7 +86,7 @@ export default function Footer() {
           <div>
             <h3 style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#66BB6A", marginBottom: 20, borderBottom: "1px solid rgba(255,255,255,0.08)", paddingBottom: 12 }}>Compliance Areas</h3>
             <ul style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              {["OSHA 2007 (Kenya)","OSHAD-SF (UAE)","ISO 45001 — OH&S","ISO 14001 — Environment","ISO 9001 — Quality","EMCA (Kenya)","UAE EHS Framework"].map(r => (
+              {["ISO 45001 (Health & Safety)","ISO 14001 (Environment)","ISO 9001 (Quality)","OSHA 2007 (Kenya)","OSHAD-SF (UAE)","International Standards"].map(r => (
                 <li key={r} style={{ fontSize: 13, color: "rgba(255,255,255,0.6)" }}>{r}</li>
               ))}
             </ul>

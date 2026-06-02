@@ -67,40 +67,36 @@ export default function HeroSection() {
                   background: "rgba(76,175,80,0.12)", color: "#66BB6A",
                   border: "1px solid rgba(76,175,80,0.25)",
                 }}>{b}</span>
+              {[ "Worldwide Virtual Services", "Kenyan-Based HQ" ].map(b => (
+                <div key={b} className="flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-3 py-1">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-white/50">{b}</span>
+                </div>
               ))}
-              <span style={{
-                display: "inline-flex", alignItems: "center", gap: 6,
-                padding: "5px 14px", fontSize: 12, fontWeight: 500,
-                background: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.6)",
-                border: "1px solid rgba(255,255,255,0.12)",
-              }}>
-                <Globe2 style={{ width: 12, height: 12 }} />
-                Safety Without Borders
-              </span>
             </div>
 
             <h1 style={{
-              fontSize: "clamp(2.2rem,6vw,4rem)",
+              fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
               fontWeight: 900,
-              lineHeight: 1.05,
-              letterSpacing: "-0.03em",
               color: "#fff",
+              lineHeight: 1.1,
+              letterSpacing: "-0.03em",
               marginBottom: 24,
             }}>
-              HSEQ Compliance,{" "}
-              <span style={{
+              Safety Without <span style={{
                 backgroundImage: "linear-gradient(90deg,#4CAF50,#66BB6A)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}>
-                Simplified
-              </span>
-              {" "}& Virtual
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+              }}>Borders</span>
             </h1>
 
-            <p style={{ fontSize: "clamp(1rem,1.2vw,1.1rem)", lineHeight: 1.65, color: "rgba(255,255,255,0.68)", marginBottom: 32, maxWidth: 520 }}>
-              Apex Veritas is your all-in-one Virtual HSEQ platform — manage compliance,
-              documents, audits, incidents and training for Kenya and UAE from one powerful dashboard.
+            <p style={{
+              fontSize: "clamp(1rem, 2vw, 1.25rem)",
+              color: "rgba(255,255,255,0.72)",
+              lineHeight: 1.6,
+              marginBottom: 40,
+              maxWidth: 580,
+            }}>
+              Based in Nairobi and serving companies worldwide. Our virtual HSEQ platform centralises 
+              documents, audits, incidents and training with global standards and local expertise.
             </p>
 
             {/* Trust */}
