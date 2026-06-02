@@ -36,21 +36,14 @@ export default function Sidebar() {
 
       <aside
         style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          zIndex: 50,
-          display: "flex",
-          flexDirection: "column",
           width: collapsed ? 64 : 240,
-          height: "100vh",
           background: "#111E35",
           borderRight: "1px solid rgba(255,255,255,0.06)",
-          transition: "transform 0.3s ease, width 0.25s ease",
-          flexShrink: 0,
-          transform: sidebarOpen ? "translateX(0)" : "translateX(-100%)",
+          height: "100vh",
         }}
-        className="lg:relative lg:translate-x-0"
+        className={`fixed inset-y-0 left-0 z-50 flex flex-col transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
       {/* Logo strip */}
       <div style={{
