@@ -4,8 +4,6 @@ import "./globals.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import SessionProvider from "@/components/shared/SessionProvider";
-import Topbar from "@/components/public/Navbar";
-import Footer from "@/components/public/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -77,9 +75,7 @@ export default async function RootLayout({
       <body>
         <SessionProvider session={session}>
           <div className="flex min-h-screen flex-col">
-            <Topbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
+            {children}
           </div>
         </SessionProvider>
       </body>
