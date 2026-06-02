@@ -6,14 +6,20 @@ import ActionCard        from "@/components/portal/ActionCard";
 import {
   AlertTriangle, Clock, FileWarning, GraduationCap,
   CheckSquare, ShieldAlert, TrendingUp, Calendar,
-  ArrowRight, MessageSquare
+  ArrowRight, MessageSquare, Loader2
 } from "lucide-react";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 
+import { useState, useEffect } from "react";
+import { toast } from "sonner";
+import { supabase } from "@/lib/supabase";
+
 export default function PortalDashboard() {
   const { data: session }        = useSession();
   const { stats, loading, error } = useCompliance();
+  const [requests, setRequests] = useState<any[]>([]);
+  const [fetchingReqs, setFetchingReqs] = useState(false);
 
   const userName = session?.user?.name?.split(" ")[0] ?? "there";
   const greeting = (() => {
@@ -22,6 +28,33 @@ export default function PortalDashboard() {
     if (h < 17) return "Good afternoon";
     return "Good evening";
   })();
+
+  useEffect(() => {
+    if (session?.user?.role === "professional" && session?.user?.email) {
+      fetchServiceRequests();
+    }
+  }, [session]);
+
+  async function fetchServiceRequests() {
+    try {
+      setFetchingReqs(true);
+      // First get the pro id
+      const { data: pro } = await supabase.from("pros").select("id").eq("user_email", session?.user?.email).single();
+      if (pro) {
+        const { data, error } = await supabase
+          .from("service_requests")
+          .select("*")
+          .eq("pro_id", pro.id)
+          .order("created_at", { ascending: false });
+        if (error) throw error;
+        setRequests(data || []);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setFetchingReqs(false);
+    }
+  }
 
   if (session?.user?.role === "professional") {
     return (
@@ -42,7 +75,7 @@ export default function PortalDashboard() {
                 Edit Profile
               </Link>
               <Link href="/portal/messages" className="px-6 py-2.5 bg-white/10 text-white font-bold rounded-lg text-sm hover:bg-white/20 transition-all border border-white/10">
-                View Messages
+                View Inbox
               </Link>
             </div>
           </div>
@@ -54,7 +87,7 @@ export default function PortalDashboard() {
                <TrendingUp className="w-6 h-6" />
              </div>
              <h3 className="font-bold text-brand-navy">Marketplace Performance</h3>
-             <p className="text-xs text-gray-500">Complete your profile to start appearing in search results and receiving hiring requests.</p>
+             <p className="text-xs text-gray-500">Complete your profile to start appearing in search results.</p>
              <div className="pt-4 text-2xl font-black text-gray-900">0 Views</div>
           </div>
 
@@ -63,10 +96,10 @@ export default function PortalDashboard() {
                <ShieldAlert className="w-6 h-6" />
              </div>
              <h3 className="font-bold text-brand-navy">Verification Status</h3>
-             <p className="text-xs text-gray-500">Upload your practicing licenses and certificates to get the "Verified" badge.</p>
+             <p className="text-xs text-gray-500">Upgrade your profile with verified certifications.</p>
              <div className="pt-4">
                 <span className="px-3 py-1 bg-yellow-50 text-yellow-700 text-[10px] font-black uppercase rounded-full border border-yellow-100">
-                  Pending Review
+                  Manual Review
                 </span>
              </div>
           </div>
@@ -75,10 +108,42 @@ export default function PortalDashboard() {
              <div className="w-12 h-12 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mx-auto">
                <MessageSquare className="w-6 h-6" />
              </div>
-             <h3 className="font-bold text-brand-navy">Client Requests</h3>
-             <p className="text-xs text-gray-500">Respond to messages and service requests from clients looking for your expertise.</p>
-             <div className="pt-4 text-2xl font-black text-gray-900">0 Requests</div>
+             <h3 className="font-bold text-brand-navy">Hire Requests</h3>
+             <p className="text-xs text-gray-500">Check below for active service requests from clients.</p>
+             <div className="pt-4 text-2xl font-black text-gray-900">{requests.length} Requests</div>
           </div>
+        </div>
+
+        <div className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+           <h3 className="text-lg font-bold text-brand-navy mb-6">Recent Service Requests</h3>
+           {fetchingReqs ? (
+              <div className="flex items-center justify-center py-10">
+                 <Loader2 className="w-6 h-6 animate-spin text-green-600" />
+              </div>
+           ) : requests.length === 0 ? (
+              <div className="py-10 text-center border-2 border-dashed border-gray-100 rounded-xl">
+                 <p className="text-sm text-gray-400">No active service requests yet.</p>
+              </div>
+           ) : (
+              <div className="space-y-4">
+                 {requests.map(req => (
+                   <div key={req.id} className="flex items-center justify-between p-4 bg-gray-50 border border-gray-100 rounded-xl">
+                      <div>
+                        <p className="text-xs font-bold text-brand-navy">{req.service_type}</p>
+                        <p className="text-[10px] text-gray-500">{req.client_email} · {new Date(req.created_at).toLocaleDateString()}</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="px-3 py-1 bg-blue-100 text-blue-700 text-[9px] font-bold uppercase rounded-full">
+                           {req.status}
+                        </span>
+                        <Link href="/portal/messages" className="p-2 hover:bg-gray-200 rounded-full text-gray-500">
+                           <MessageSquare className="w-4 h-4" />
+                        </Link>
+                      </div>
+                   </div>
+                 ))}
+              </div>
+           )}
         </div>
       </div>
     );

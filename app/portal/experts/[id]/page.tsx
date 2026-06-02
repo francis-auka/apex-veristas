@@ -5,8 +5,10 @@ import {
   Mail, Calendar, ArrowLeft, ShieldCheck, Briefcase
 } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { toast } from "sonner";
+import { supabase } from "@/lib/supabase";
 
 interface Credential {
   id: string;
@@ -44,8 +46,16 @@ interface Professional {
 export default function ExpertDetailPage() {
   const params = useParams();
   const router = useRouter();
+  const { data: session } = useSession();
   const [pro, setPro] = useState<Professional | null>(null);
   const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+
+  // Modals
+  const [showRequestModal, setShowRequestModal] = useState(false);
+  const [showMessageModal, setShowMessageModal] = useState(false);
+  const [content, setContent] = useState("");
+  const [serviceType, setServiceType] = useState("Consultation");
 
   useEffect(() => {
     if (params.id) {
@@ -70,6 +80,52 @@ export default function ExpertDetailPage() {
     }
   }
 
+  async function handleSendRequest(e: React.FormEvent) {
+    e.preventDefault();
+    if (!session?.user?.email) return toast.error("Please sign in to request services");
+    setSubmitting(true);
+    try {
+      const { error } = await supabase.from("service_requests").insert({
+        client_email: session.user.email,
+        pro_id: pro?.id,
+        service_type: serviceType,
+        description: content,
+      });
+      if (error) throw error;
+      toast.success("Service request sent successfully!");
+      setShowRequestModal(false);
+      setContent("");
+    } catch (err) {
+      toast.error("Failed to send request");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  async function handleSendMessage(e: React.FormEvent) {
+    e.preventDefault();
+    if (!session?.user?.email) return toast.error("Please sign in to send messages");
+    if (!pro?.id) return;
+    setSubmitting(true);
+    try {
+      const { data: proData } = await supabase.from("pros").select("user_email").eq("id", pro.id).single();
+      
+      const { error } = await supabase.from("messages").insert({
+        sender_email: session.user.email,
+        receiver_email: proData?.user_email,
+        content: content,
+      });
+      if (error) throw error;
+      toast.success("Message sent successfully!");
+      setShowMessageModal(false);
+      setContent("");
+    } catch (err) {
+      toast.error("Failed to send message");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   if (loading) return (
     <div className="flex flex-col items-center justify-center py-20 gap-4">
       <Loader2 className="h-8 w-8 animate-spin text-green-600" />
@@ -87,7 +143,7 @@ export default function ExpertDetailPage() {
   );
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-10">
       <button onClick={() => router.back()} className="group flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-brand-navy transition-colors">
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to Directory
       </button>
@@ -174,10 +230,16 @@ export default function ExpertDetailPage() {
               </div>
 
               <div className="pt-6 border-t border-white/10 space-y-4">
-                <button className="w-full py-4 bg-green-600 hover:bg-green-500 text-white font-black text-sm uppercase tracking-widest transition-all rounded-lg shadow-lg shadow-green-900/40">
+                <button 
+                  onClick={() => setShowRequestModal(true)}
+                  className="w-full py-4 bg-green-600 hover:bg-green-500 text-white font-black text-sm uppercase tracking-widest transition-all rounded-lg shadow-lg shadow-green-900/40"
+                >
                   Request Service
                 </button>
-                <button className="w-full py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-sm uppercase tracking-widest transition-all rounded-lg flex items-center justify-center gap-2">
+                <button 
+                  onClick={() => setShowMessageModal(true)}
+                  className="w-full py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-sm uppercase tracking-widest transition-all rounded-lg flex items-center justify-center gap-2"
+                >
                   <Mail className="w-4 h-4" /> Message Expert
                 </button>
               </div>
@@ -218,6 +280,102 @@ export default function ExpertDetailPage() {
         </div>
 
       </div>
+
+      {/* Request Service Modal */}
+      {showRequestModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl space-y-6">
+            <h2 className="text-xl font-bold text-brand-navy">Request HSEQ Service</h2>
+            <form onSubmit={handleSendRequest} className="space-y-4">
+              <div>
+                <label className="text-[10px] font-bold uppercase text-gray-400 block mb-1">Type of Service</label>
+                <select 
+                  value={serviceType}
+                  onChange={(e) => setServiceType(e.target.value)}
+                  className="w-full px-4 py-2 bg-gray-50 border border-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500/20"
+                >
+                  <option>Consultation</option>
+                  <option>Audit</option>
+                  <option>Training</option>
+                  <option>Risk Assessment</option>
+                </select>
+              </div>
+              <div>
+                <label className="text-[10px] font-bold uppercase text-gray-400 block mb-1">Details / Requirements</label>
+                <textarea 
+                  required
+                  rows={4}
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                  placeholder="Describe what you need..."
+                  className="w-full px-4 py-2 bg-gray-50 border border-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500/20 resize-none transition-all"
+                />
+              </div>
+              <div className="flex gap-3 pt-2">
+                <button 
+                  type="button" 
+                  onClick={() => setShowRequestModal(false)}
+                  className="flex-1 py-2.5 text-sm font-bold text-gray-500 hover:bg-gray-50 rounded-lg transition-colors border border-gray-100"
+                >
+                  Cancel
+                </button>
+                <button 
+                  type="submit"
+                  disabled={submitting}
+                  className="flex-2 px-8 py-2.5 bg-green-600 text-white font-bold rounded-lg text-sm hover:bg-green-500 transition-all flex items-center justify-center gap-2"
+                >
+                  {submitting && <Loader2 className="w-4 h-4 animate-spin" />}
+                  Send Request
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Message Modal */}
+      {showMessageModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl space-y-6">
+            <div className="flex items-center gap-3">
+               <div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
+                  <Mail className="w-5 h-5" />
+               </div>
+               <h2 className="text-xl font-bold text-brand-navy">Message {pro?.fullName}</h2>
+            </div>
+            <form onSubmit={handleSendMessage} className="space-y-4">
+              <div>
+                <label className="text-[10px] font-bold uppercase text-gray-400 block mb-1">Message Content</label>
+                <textarea 
+                  required
+                  rows={6}
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                  placeholder="Write your message here..."
+                  className="w-full px-4 py-2 bg-gray-50 border border-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500/20 resize-none"
+                />
+              </div>
+              <div className="flex gap-3 pt-2">
+                <button 
+                  type="button" 
+                  onClick={() => setShowMessageModal(false)}
+                  className="flex-1 py-2.5 text-sm font-bold text-gray-500 hover:bg-gray-50 rounded-lg transition-colors border border-gray-100"
+                >
+                  Cancel
+                </button>
+                <button 
+                  type="submit"
+                  disabled={submitting}
+                  className="flex-2 px-8 py-2.5 bg-blue-600 text-white font-bold rounded-lg text-sm hover:bg-blue-500 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-900/20"
+                >
+                  {submitting && <Loader2 className="w-4 h-4 animate-spin" />}
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
